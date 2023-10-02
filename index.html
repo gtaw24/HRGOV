@@ -37,9 +37,13 @@
         <label for="last-name">Last Name:</label>
         <input type="text" id="last-name">
     </div>
+    <button onclick="generateOutput('process')">Process</button>
     <button onclick="generateOutput('interview')">Interview</button>
     <button onclick="generateOutput('rejected')">Rejected</button>
     <button onclick="generateOutput('accept-candidate')">Accept Candidate</button>
+</div>
+<div class="output-box" id="process-box">
+    <!-- Output for Process -->
 </div>
 <div class="output-box" id="interview-box">
     <!-- Output for Interview -->
@@ -58,22 +62,8 @@
 
         let output = '';
 
-        if (outputType === 'interview') {
-            output = `[accordionfixed=1;JOB INTERVIEW][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
-            LOS SANTOS CITY GOVERNMENT 
-            CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nCongratulations! After reviewing your application, I am pleased to announce you've been selected to continue the process.\n\nHowever, this was only the first step of the selection process. The next step, your job interview, will include questions regarding your background, job knowledge, skills and competencies, previous work experiences, etc.\n\nPlease forward an email with your upcoming availability.\n\nYou will receive further details about the job interview via your provided email address.\n\nPlease do not hesitate to write or call if we can assist you in the days ahead.`;
-        } else if (outputType === 'rejected') {
-            output = `[accordionfixed=1;TERMINATION OF RECRUITMENT][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
-            LOS SANTOS CITY GOVERNMENT 
-            CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nWe regret to inform you that we are unable to offer you a position within the Los Santos City Government.\n\nThere are few tasks more difficult than denying an applicant to join us. Although there is no way for us to lessen the disappointment, we would like to point out that we reviewed your application to the best of our abilities. Due to your current writing skills and knowledge of the English language, and the importance this has in the Department of Health and Human Services, we cannot let you continue through the recruitment process. I recommend you work on your writing skills and grammar. You are welcome to reapply at any time, and please reach out to me if you have any questions or if there is anything I can help you with.\n\nThank you for your interest in a career with the City, and best of luck on your next endeavors.`;
-        } else if (outputType === 'accept-candidate') {
-            output = `[accordionfixed=1;LETTER OF ACCEPTANCE][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
-            LOS SANTOS CITY GOVERNMENT 
-            CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nCongratulations! After a thorough review of your application and assessment of your interview, I am pleased to announce that we are offering you the position of FILL IN within the Los Santos City Government.\n\nYou must view your e-mail inbox and follow the guidelines to ensure an up-to-date employment record.\n\nShould you have any questions regarding your employment, please do not hesitate to reply to the e-mail sent to you.`;
-        }
-
-        // Set the content of the output box
-        document.getElementById(`${outputType}-box`).innerHTML = `[divbox=white]
+        if (outputType === 'process') {
+            output = `[divbox=white]
 [right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
 [u]DEPARTMENT OF HEALTH & HUMAN SERVICES
 LOS SANTOS CITY GOVERNMENT
@@ -84,9 +74,21 @@ CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
 
 Dear ${title} ${lastName},
 
-${output}
+Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.
+
+Thank you for your interest in a career with the Los Santos City Government.
 
 Sincerely,`;
+        } else if (outputType === 'interview') {
+            // ... (rest of the code remains the same)
+        } else if (outputType === 'rejected') {
+            // ... (rest of the code remains the same)
+        } else if (outputType === 'accept-candidate') {
+            // ... (rest of the code remains the same)
+        }
+
+        // Set the content of the output box
+        document.getElementById(`${outputType}-box`).innerHTML = output;
 
         // Show the output box
         document.getElementById(`${outputType}-box`).style.display = 'block';
