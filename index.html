@@ -71,22 +71,10 @@
             LOS SANTOS CITY GOVERNMENT 
             CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nWe regret to inform you that we are unable to offer you a position within the Los Santos City Government.\n\nThere are few tasks more difficult than denying an applicant to join us. Although there is no way for us to lessen the disappointment, we would like to point out that we reviewed your application to the best of our abilities. Due to your current writing skills and knowledge of the English language, and the importance this has in the Department of Health and Human Services, we cannot let you continue through the recruitment process. I recommend you work on your writing skills and grammar. You are welcome to reapply at any time, and please reach out to me if you have any questions or if there is anything I can help you with.\n\nThank you for your interest in a career with the City, and best of luck on your next endeavors.`;
             } else if (outputType === 'response') {
-            output = `[divbox=white]
-[right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
-[u]DEPARTMENT OF HEALTH & HUMAN SERVICES
-LOS SANTOS CITY GOVERNMENT
-CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
-[/right]
-[br][/br]
-[hr][/hr]
-
-Dear TITLE  LAST NAME,
-
-Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.
-
-Thank you for your interest in a career with the Los Santos City Government.
-
-Sincerely,`;
+            output = `[accordionfixed=1;CONFIRMATION OF SUBMISSION][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
+            LOS SANTOS CITY GOVERNMENT 
+            CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nYour job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. \n\nPlease contact the admissions staff if you have any other questions. We are looking forward to reading your application.\n\nPlease forward an email with your upcoming availability.\n\nThank you for your interest in a career with the Los Santos City Government.\n\nSincerely,`;
+        } else if (outputType === 'rejected') {
         } else if (outputType === 'accept-candidate') {
             output = `[accordionfixed=1;LETTER OF ACCEPTANCE][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
             LOS SANTOS CITY GOVERNMENT 
