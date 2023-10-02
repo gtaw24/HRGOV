@@ -20,6 +20,22 @@
         </div>
     </form>
 
+    <div id="signatureForm" style="display: none;">
+        <h2>Generate HHS Signature</h2>
+        <label for="name">Input your name:</label>
+        <input type="text" id="name" required><br><br>
+        
+        <label for="rank">Input your rank:</label>
+        <input type="text" id="rank" required><br><br>
+        
+        <label for="govLink">Paste your GOV forum link:</label>
+        <input type="text" id="govLink" required><br><br>
+
+        <button type="button" onclick="generateSignature()">Generate e-mail signature</button>
+    </div>
+
+    <div id="signatureOutput" style="display: none;"></div>
+
     <script>
         function goToStep2() {
             const applicationText = document.getElementById("applicationText").value;
@@ -38,44 +54,34 @@
             // This function should generate the appropriate output for Step 2
 
             // Replace placeholders with actual data
-            const output = `
-                [divbox=white]
-                [right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
-                [u]DEPARTMENT OF HEALTH & HUMAN SERVICES
-                LOS SANTOS CITY GOVERNMENT
-                CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
-                [/right]
-                [br][/br]
-                [hr][/hr]
-
-                Dear Mister Monteno,
-
-                Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.
-
-                Thank you for your interest in a career with the Los Santos City Government.
-
-                Sincerely,
-
-                [i]Sincerely,[/i]
-                [br][/br]
-                [justify][b][i][justify]TITLE[/justify][/i][/b][justify]
-                [justify][size=85]LAST NAME[/size][/justify]
-                [justify][size=85]E-mail: [url=govlink]first.lastname@ls.mail[/url][/size]
-            `;
+            const output = `...` // Your application output logic here
 
             return output;
         }
 
         function acceptApplication() {
-            // Your logic for the "Accept" action goes here
-            alert("Application accepted!");
+            // Your logic for accepting the application goes here
+            document.getElementById("step2").style.display = "none";
+            document.getElementById("signatureForm").style.display = "block";
         }
 
         function rejectApplication() {
-            // Your logic for the "Reject" action goes here
+            // Your logic for rejecting the application goes here
             alert("Application rejected.");
+            document.getElementById("step2").style.display = "none";
+        }
+
+        function generateSignature() {
+            const name = document.getElementById("name").value;
+            const rank = document.getElementById("rank").value;
+            const govLink = document.getElementById("govLink").value;
+            const signatureOutput = document.getElementById("signatureOutput");
+
+            const output = `...` // Your signature generation logic here
+
+            signatureOutput.innerHTML = output;
+            signatureOutput.style.display = "block";
         }
     </script>
 </body>
 </html>
-
