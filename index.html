@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Application Form</title>
+</head>
+<body>
+    <form id="applicationForm">
+        <h2>Application Form</h2>
+        <div id="step1">
+            <h3>Step 1: Paste Application Here</h3>
+            <textarea id="applicationText" rows="20" cols="50"></textarea><br><br>
+            <button type="button" onclick="goToStep2()">1st Step</button>
+        </div>
+
+        <div id="step2" style="display: none;">
+            <h3>Step 2: Review</h3>
+            <div id="step2Output"></div>
+            <button type="button" onclick="acceptApplication()">Accept</button>
+            <button type="button" onclick="rejectApplication()">Reject</button>
+        </div>
+    </form>
+
+    <script>
+        function goToStep2() {
+            const applicationText = document.getElementById("applicationText").value;
+            const step2Output = document.getElementById("step2Output");
+
+            // Process and display the application in Step 2
+            step2Output.innerHTML = processApplication(applicationText);
+
+            // Show Step 2 and hide Step 1
+            document.getElementById("step1").style.display = "none";
+            document.getElementById("step2").style.display = "block";
+        }
+
+        function processApplication(applicationText) {
+            // Your processing logic for the application goes here
+            // This function should generate the appropriate output for Step 2
+
+            // Replace placeholders with actual data
+            const output = `
+                [divbox=white]
+                [right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
+                [u]DEPARTMENT OF HEALTH & HUMAN SERVICES
+                LOS SANTOS CITY GOVERNMENT
+                CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
+                [/right]
+                [br][/br]
+                [hr][/hr]
+
+                Dear Mister Monteno,
+
+                Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.
+
+                Thank you for your interest in a career with the Los Santos City Government.
+
+                Sincerely,
+
+                [i]Sincerely,[/i]
+                [br][/br]
+                [justify][b][i][justify]TITLE[/justify][/i][/b][justify]
+                [justify][size=85]LAST NAME[/size][/justify]
+                [justify][size=85]E-mail: [url=govlink]first.lastname@ls.mail[/url][/size]
+            `;
+
+            return output;
+        }
+
+        function acceptApplication() {
+            // Your logic for the "Accept" action goes here
+            alert("Application accepted!");
+        }
+
+        function rejectApplication() {
+            // Your logic for the "Reject" action goes here
+            alert("Application rejected.");
+        }
+    </script>
+</body>
+</html>
 
