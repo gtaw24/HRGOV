@@ -91,10 +91,19 @@ Sincerely,`;
         }
 
         // Set the content of the output box
-        document.getElementById(`${outputType}-box`).innerHTML = output;
+        const outputBox = document.getElementById(`${outputType}-box`);
+        outputBox.innerHTML = output;
 
         // Show the output box
-        document.getElementById(`${outputType}-box`).style.display = 'block';
+        outputBox.style.display = 'block';
+        
+        // Add the copy button
+        const copyButton = document.createElement('button');
+        copyButton.innerText = 'Copy';
+        copyButton.onclick = function() {
+            copyToClipboard(outputType + '-box');
+        };
+        outputBox.appendChild(copyButton);
     }
 
     function copyToClipboard(elementId) {
