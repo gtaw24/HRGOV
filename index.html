@@ -29,7 +29,7 @@
     </div>
     <div class="input-group">
         <label for="rank">Rank:</label>
-        <input type text" id="rank">
+        <input type="text" id="rank">
     </div>
     <div class="input-group">
         <label for="gov-forum-url">Gov Forum URL:</label>
@@ -78,10 +78,10 @@
         const title = `Mister ${candidateTitle} ${candidateLastName}`;
         const email = `${candidateTitle.toLowerCase()}.${candidateLastName.toLowerCase()}@ls.mail`;
 
-        document.querySelector('.output-title').innerText = title;
-        document.querySelector('.output-content [b] [i]').innerText = fullName;
-        document.querySelector('.output-content [size]').innerText = rank;
-        document.querySelector('.output-content [url]').innerText = govForumURL;
+        document.querySelector('.output-title').innerHTML = title;
+        document.querySelector('.output-content [b] [i]').innerHTML = fullName;
+        document.querySelector('.output-content [size]').innerHTML = rank;
+        document.querySelector('.output-content [url]').innerHTML = govForumURL;
         document.querySelector('.output-content [url]').setAttribute('href', govForumURL);
         document.querySelector('.output-content [url]').setAttribute('url', email);
         
