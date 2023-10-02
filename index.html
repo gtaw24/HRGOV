@@ -1,108 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Job Application Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        width: 50%;
+        margin: 0 auto;
+    }
+    .input-group {
+        margin: 10px 0;
+    }
+    label {
+        display: inline-block;
+        width: 120px;
+    }
+    input[type="text"] {
+        width: 100%;
+    }
+</style>
 </head>
 <body>
-    <form id="applicationForm">
-        <h2>Application Form</h2>
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" required><br><br>
-        <label for="rank">Rank:</label>
-        <input type="text" id="rank" required><br><br>
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" required><br><br>
-
-        <div id="step1">
-            <h3>Step 1: Paste Application Here</h3>
-            <textarea id="applicationText" rows="20" cols="50"></textarea><br><br>
-            <button type="button" onclick="goToStep2()">1st Step</button>
-        </div>
-
-        <div id="step2" style="display: none;">
-            <h3>Step 2: Review</h3>
-            <div id="step2Output"></div>
-            <button type="button" onclick="acceptApplication()">Accept</button>
-            <button type="button" onclick="rejectApplication()">Reject</button>
-        </div>
-    </form>
-
-    <div id="signatureForm" style="display: none;">
-        <h2>Generate HHS Signature</h2>
-        <label for="name">Input your name:</label>
-        <input type="text" id="name" required><br><br>
-        <label for="rank">Input your rank:</label>
-        <input type="text" id="signatureRank" required><br><br>
-        <label for="govLink">Paste your GOV forum link:</label>
-        <input type="text" id="govLink" required><br><br>
-        <button type="button" onclick="generateSignature()">Generate e-mail signature</button>
+<div class="container">
+    <div class="input-group">
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name">
     </div>
+    <div class="input-group">
+        <label for="rank">Rank:</label>
+        <input type="text" id="rank">
+    </div>
+    <div class="input-group">
+        <label for="gov-forum-url">Gov Forum URL:</label>
+        <input type="text" id="gov-forum-url">
+    </div>
+    <div class="input-group">
+        <label for="candidate-title">Candidate TITLE:</label>
+        <input type="text" id="candidate-title">
+    </div>
+    <div class="input-group">
+        <label for="candidate-last-name">Candidate Last Name:</label>
+        <input type="text" id="candidate-last-name">
+    </div>
+    <button onclick="generateLetter()">Process</button>
+</div>
+<div class="output-container" style="display: none;">
+    <div class="output-content" style="background: white;">
+        <div style="text-align: right;">
+            <img src="https://i.imgur.com/S2U5wdm.png" style="float: right;">
+            <u>DEPARTMENT OF HEALTH & HUMAN SERVICES<br>LOS SANTOS CITY GOVERNMENT<br>CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA</u>
+        </div>
+        <hr>
+        <p>Dear <span class="output-title">Mister Monteno</span>,</p>
+        <p>Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.</p>
+        <p>Thank you for your interest in a career with the Los Santos City Government.</p>
+        <p>Sincerely,</p>
+        <div class="signature">
+            <b><i>full name</i></b><br>
+            <span class="rank">rank</span><br>
+            E-mail: <a class="email" href="mailto:">3. input field</a>
+        </div>
+    </div>
+</div>
+<script>
+    function generateLetter() {
+        const fullName = document.getElementById("full-name").value;
+        const rank = document.getElementById("rank").value;
+        const govForumURL = document.getElementById("gov-forum-url").value;
+        const candidateTitle = document.getElementById("candidate-title").value;
+        const candidateLastName = document.getElementById("candidate-last-name").value;
 
-    <div id="signatureOutput" style="display: none;"></div>
+        const title = `Mister ${candidateTitle} ${candidateLastName}`;
+        const email = `${candidateTitle.toLowerCase()}.${candidateLastName.toLowerCase()}@ls.mail`;
 
-    <script>
-        function goToStep2() {
-            const applicationText = document.getElementById("applicationText").value;
-            const step2Output = document.getElementById("step2Output");
-
-            // Process and display the application in Step 2
-            step2Output.innerHTML = processApplication(applicationText);
-
-            // Show Step 2 and hide Step 1
-            document.getElementById("step1").style.display = "none";
-            document.getElementById("step2").style.display = "block";
-        }
-
-        function processApplication(applicationText) {
-            // Your processing logic for the application goes here
-            // This function should generate the appropriate output for Step 2
-
-            // Replace placeholders with actual data
-            const output = `...` // Your application output logic here
-
-            return output;
-        }
-
-        function acceptApplication() {
-            // Your logic for accepting the application goes here
-            document.getElementById("step2").style.display = "none";
-            document.getElementById("signatureForm").style.display = "block";
-        }
-
-        function rejectApplication() {
-            // Your logic for rejecting the application goes here
-            alert("Application rejected.");
-            document.getElementById("step2").style display = "none";
-        }
-
-        function generateSignature() {
-            const name = document.getElementById("name").value;
-            const rank = document.getElementById("signatureRank").value;
-            const govLink = document.getElementById("govLink").value;
-            const email = document.getElementById("email").value;
-            const signatureOutput = document.getElementById("signatureOutput");
-
-            // Replace placeholders in the signature template with the input values
-            const signature = `
-                [divbox=white]
-                [right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
-                [u]DEPARTMENT OF HEALTH & HUMAN SERVICES
-                LOS SANTOS CITY GOVERNMENT
-                CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
-                [/right]
-                [br][/br]
-                [hr][/hr]
-
-                [i]Sincerely,[/i]
-                [br][/br]
-                [justify][b][i][justify]${name}[/justify][/i][/b][justify]
-                [justify][size=85]${rank}[/size][/justify]
-                [justify][size=85]E-mail: [url=${govLink}]${email}[/url][/size]
-            `;
-
-            signatureOutput.innerText = signature;
-            signatureOutput.style.display = "block";
-        }
-    </script>
+        document.querySelector('.output-title').innerText = title;
+        document.querySelector('.signature b i').innerText = fullName;
+        document.querySelector('.rank').innerText = rank;
+        document.querySelector('.email').innerText = govForumURL;
+        document.querySelector('.email').href = `mailto:${email}`;
+        
+        document.querySelector('.output-container').style.display = 'block';
+    }
+</script>
 </body>
 </html>
