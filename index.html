@@ -37,14 +37,10 @@
         <label for="last-name">Last Name:</label>
         <input type="text" id="last-name">
     </div>
-    <button onclick="generateOutput('process')">Process</button>
     <button onclick="generateOutput('interview')">Interview</button>
     <button onclick="generateOutput('rejected')">Rejected</button>
     <button onclick="generateOutput('accept-candidate')">Accept Candidate</button>
 </div>
-    <div class="output-box" id="process-box">
-    <!-- Output for Process -->
-    <button onclick="copyToClipboard('process-box')">Copy</button>
 <div class="output-box" id="interview-box">
     <!-- Output for Interview -->
 </div>
@@ -62,25 +58,7 @@
 
         let output = '';
 
-        if (outputType === 'process') {
-            output = `[divbox=white]
-[right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
-[u]DEPARTMENT OF HEALTH & HUMAN SERVICES
-LOS SANTOS CITY GOVERNMENT
-CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
-[/right]
-[br][/br]
-[hr][/hr]
-
-Dear ${title} ${lastName},
-
-Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.
-
-Thank you for your interest in a career with the Los Santos City Government.
-
-Sincerely,`;
-
-        else if (outputType === 'interview') {
+        if (outputType === 'interview') {
             output = `[accordionfixed=1;JOB INTERVIEW][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
             LOS SANTOS CITY GOVERNMENT 
             CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nCongratulations! After reviewing your application, I am pleased to announce you've been selected to continue the process.\n\nHowever, this was only the first step of the selection process. The next step, your job interview, will include questions regarding your background, job knowledge, skills and competencies, previous work experiences, etc.\n\nPlease forward an email with your upcoming availability.\n\nYou will receive further details about the job interview via your provided email address.\n\nPlease do not hesitate to write or call if we can assist you in the days ahead.`;
