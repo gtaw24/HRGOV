@@ -29,7 +29,7 @@
     </div>
     <div class="input-group">
         <label for="rank">Rank:</label>
-        <input type="text" id="rank">
+        <input type text" id="rank">
     </div>
     <div class="input-group">
         <label for="gov-forum-url">Gov Forum URL:</label>
@@ -43,28 +43,32 @@
         <label for="candidate-last-name">Candidate Last Name:</label>
         <input type="text" id="candidate-last-name">
     </div>
-    <button onclick="generateLetter()">Process</button>
+    <button onclick="generateBBCode()">Process</button>
 </div>
 <div class="output-container" style="display: none;">
-    <div class="output-content" style="background: white;">
-        <div style="text-align: right;">
-            <img src="https://i.imgur.com/S2U5wdm.png" style="float: right;">
-            <u>DEPARTMENT OF HEALTH & HUMAN SERVICES<br>LOS SANTOS CITY GOVERNMENT<br>CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA</u>
-        </div>
-        <hr>
-        <p>Dear <span class="output-title">Mister Monteno</span>,</p>
-        <p>Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.</p>
-        <p>Thank you for your interest in a career with the Los Santos City Government.</p>
-        <p>Sincerely,</p>
-        <div class="signature">
-            <b><i>full name</i></b><br>
-            <span class="rank">rank</span><br>
-            E-mail: <a class="email" href="mailto:">3. input field</a>
-        </div>
+    <div class="output-content">
+        [divbox=white]
+        [right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
+        [u]DEPARTMENT OF HEALTH & HUMAN SERVICES
+        LOS SANTOS CITY GOVERNMENT
+        CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
+        [/right]
+        [br][/br]
+        [hr][/hr]
+
+        [p]Dear [span class="output-title">Mister Monteno[/span],[/p]
+        [p]Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.[/p]
+        [p]Thank you for your interest in a career with the Los Santos City Government.[/p]
+        [p]Sincerely,[/p]
+        [br][/br]
+        [justify][b][i]full name[/i][/b][/justify]
+        [justify][size=85]rank[/size][/justify]
+        [justify][size=85]E-mail: [url=3. input field]3. input field[/url][/size][/justify]
+        [/divbox]
     </div>
 </div>
 <script>
-    function generateLetter() {
+    function generateBBCode() {
         const fullName = document.getElementById("full-name").value;
         const rank = document.getElementById("rank").value;
         const govForumURL = document.getElementById("gov-forum-url").value;
@@ -75,10 +79,11 @@
         const email = `${candidateTitle.toLowerCase()}.${candidateLastName.toLowerCase()}@ls.mail`;
 
         document.querySelector('.output-title').innerText = title;
-        document.querySelector('.signature b i').innerText = fullName;
-        document.querySelector('.rank').innerText = rank;
-        document.querySelector('.email').innerText = govForumURL;
-        document.querySelector('.email').href = `mailto:${email}`;
+        document.querySelector('.output-content [b] [i]').innerText = fullName;
+        document.querySelector('.output-content [size]').innerText = rank;
+        document.querySelector('.output-content [url]').innerText = govForumURL;
+        document.querySelector('.output-content [url]').setAttribute('href', govForumURL);
+        document.querySelector('.output-content [url]').setAttribute('url', email);
         
         document.querySelector('.output-container').style.display = 'block';
     }
