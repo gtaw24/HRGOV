@@ -14,78 +14,95 @@
     }
     label {
         display: inline-block;
-        width: 120px;
+        width: 150px;
     }
     input[type="text"] {
         width: 100%;
+    }
+    .output-box {
+        display: none;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 20px;
     }
 </style>
 </head>
 <body>
 <div class="container">
     <div class="input-group">
-        <label for="full-name">Full Name:</label>
-        <input type="text" id="full-name">
+        <label for="title">Title:</label>
+        <input type="text" id="title">
     </div>
     <div class="input-group">
-        <label for="rank">Rank:</label>
-        <input type="text" id="rank">
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name">
     </div>
-    <div class="input-group">
-        <label for="gov-forum-url">Gov Forum URL:</label>
-        <input type="text" id="gov-forum-url">
-    </div>
-    <div class="input-group">
-        <label for="candidate-title">Candidate TITLE:</label>
-        <input type="text" id="candidate-title">
-    </div>
-    <div class="input-group">
-        <label for="candidate-last-name">Candidate Last Name:</label>
-        <input type="text" id="candidate-last-name">
-    </div>
-    <button onclick="generateBBCode()">Process</button>
+    <button onclick="generateOutput('interview')">Interview</button>
+    <button onclick="generateOutput('rejected')">Rejected</button>
+    <button onclick="generateOutput('accept-candidate')">Accept Candidate</button>
 </div>
-<div class="output-container" style="display: none;">
-    <div class="output-content">
-        [divbox=white]
-        [right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
-        [u]DEPARTMENT OF HEALTH & HUMAN SERVICES
-        LOS SANTOS CITY GOVERNMENT
-        CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
-        [/right]
-        [br][/br]
-        [hr][/hr]
+<div class="output-box" id="interview-box">
+    <!-- Output for Interview -->
+</div>
+<div class="output-box" id="rejected-box">
+    <!-- Output for Rejected -->
+</div>
+<div class="output-box" id="accept-candidate-box">
+    <!-- Output for Accept Candidate -->
+</div>
 
-        [p]Dear [span class="output-title">Mister Moreno</span>,</p>
-        [p]Your job application has been submitted and is being reviewed. Expect a reply within the next twenty-four to forty-eight hours. If we schedule an interview, we will provide you with time and materials to prepare. Please contact the admissions staff if you have any other questions. We are looking forward to reading your application.[/p]
-        [p]Thank you for your interest in a career with the Los Santos City Government.[/p]
-        [p]Sincerely,[/p]
-        [br][/br]
-        [justify][b][i]full name[/i][/b][/justify]
-        [justify][size=85]rank[/size][/justify]
-        [justify][size=85]E-mail: [url=3. input field]3. input field[/url][/size][/justify]
-        [/divbox]
-    </div>
-</div>
 <script>
-    function generateBBCode() {
-        const fullName = document.getElementById("full-name").value;
-        const rank = document.getElementById("rank").value;
-        const govForumURL = document.getElementById("gov-forum-url").value;
-        const candidateTitle = document.getElementById("candidate-title").value;
-        const candidateLastName = document.getElementById("candidate-last-name").value;
+    function generateOutput(outputType) {
+        const title = document.getElementById("title").value;
+        const lastName = document.getElementById("last-name").value;
 
-        const title = `Mister ${candidateTitle} ${candidateLastName}`;
-        const email = `${candidateTitle.toLowerCase()}.${candidateLastName.toLowerCase()}@ls.mail`;
+        let output = '';
 
-        document.querySelector('.output-title').innerHTML = title;
-        document.querySelector('.output-content [b] [i]').innerHTML = fullName;
-        document.querySelector('.output-content [size]').innerHTML = rank;
-        document.querySelector('.output-content [url]').innerHTML = govForumURL;
-        document.querySelector('.output-content [url]').setAttribute('href', govForumURL);
-        document.querySelector('.output-content [url]').setAttribute('url', email);
-        
-        document.querySelector('.output-container').style.display = 'block';
+        if (outputType === 'interview') {
+            output = `[accordionfixed=1;JOB INTERVIEW][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
+            LOS SANTOS CITY GOVERNMENT 
+            CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nCongratulations! After reviewing your application, I am pleased to announce you've been selected to continue the process.\n\nHowever, this was only the first step of the selection process. The next step, your job interview, will include questions regarding your background, job knowledge, skills and competencies, previous work experiences, etc.\n\nPlease forward an email with your upcoming availability.\n\nYou will receive further details about the job interview via your provided email address.\n\nPlease do not hesitate to write or call if we can assist you in the days ahead.`;
+        } else if (outputType === 'rejected') {
+            output = `[accordionfixed=1;TERMINATION OF RECRUITMENT][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
+            LOS SANTOS CITY GOVERNMENT 
+            CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nWe regret to inform you that we are unable to offer you a position within the Los Santos City Government.\n\nThere are few tasks more difficult than denying an applicant to join us. Although there is no way for us to lessen the disappointment, we would like to point out that we reviewed your application to the best of our abilities. Due to your current writing skills and knowledge of the English language, and the importance this has in the Department of Health and Human Services, we cannot let you continue through the recruitment process. I recommend you work on your writing skills and grammar. You are welcome to reapply at any time, and please reach out to me if you have any questions or if there is anything I can help you with.\n\nThank you for your interest in a career with the City, and best of luck on your next endeavors.`;
+        } else if (outputType === 'accept-candidate') {
+            output = `[accordionfixed=1;LETTER OF ACCEPTANCE][br][/br][center][fimg=right]https://i.imgur.com/ShcMWOl.png[/fimg][color=#5597D0][right][br][/br][u][size=80]DEPARTMENT OF HEALTH AND HUMAN SERVICES
+            LOS SANTOS CITY GOVERNMENT 
+            CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/size][/u][/right][/color][br][/br][hr][/hr][justify]Dear ${title} [b]${lastName}[/b],\n\nCongratulations! After a thorough review of your application and assessment of your interview, I am pleased to announce that we are offering you the position of FILL IN within the Los Santos City Government.\n\nYou must view your e-mail inbox and follow the guidelines to ensure an up-to-date employment record.\n\nShould you have any questions regarding your employment, please do not hesitate to reply to the e-mail sent to you.`;
+        }
+
+        // Set the content of the output box
+        document.getElementById(`${outputType}-box`).innerHTML = `[divbox=white]
+[right][fimg=right]https://i.imgur.com/S2U5wdm.png[/fimg]
+[u]DEPARTMENT OF HEALTH & HUMAN SERVICES
+LOS SANTOS CITY GOVERNMENT
+CARCER WAY 1, ROCKFORD HILLS, LOS SANTOS, SA[/u]
+[/right]
+[br][/br]
+[hr][/hr]
+
+Dear ${title} ${lastName},
+
+${output}
+
+Sincerely,`;
+
+        // Show the output box
+        document.getElementById(`${outputType}-box`).style.display = 'block';
+
+        // Copy the content to clipboard
+        copyToClipboard(`${outputType}-box`);
+    }
+
+    function copyToClipboard(elementId) {
+        const text = document.getElementById(elementId).textContent;
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
     }
 </script>
 </body>
