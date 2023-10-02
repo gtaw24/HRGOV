@@ -20,7 +20,6 @@
         width: 100%;
     }
     .output-box {
-        display: none;
         border: 1px solid #ccc;
         padding: 10px;
         margin-top: 20px;
@@ -44,15 +43,19 @@
 </div>
 <div class="output-box" id="process-box">
     <!-- Output for Process -->
+    <button onclick="copyToClipboard('process-box')">Copy</button>
 </div>
 <div class="output-box" id="interview-box">
     <!-- Output for Interview -->
+    <button onclick="copyToClipboard('interview-box')">Copy</button>
 </div>
 <div class="output-box" id="rejected-box">
     <!-- Output for Rejected -->
+    <button onclick="copyToClipboard('rejected-box')">Copy</button>
 </div>
 <div class="output-box" id="accept-candidate-box">
     <!-- Output for Accept Candidate -->
+    <button onclick="copyToClipboard('accept-candidate-box')">Copy</button>
 </div>
 
 <script>
@@ -92,9 +95,6 @@ Sincerely,`;
 
         // Show the output box
         document.getElementById(`${outputType}-box`).style.display = 'block';
-
-        // Copy the content to clipboard
-        copyToClipboard(`${outputType}-box`);
     }
 
     function copyToClipboard(elementId) {
